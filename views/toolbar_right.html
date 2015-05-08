@@ -1,0 +1,41 @@
+[[? model.session && model.session.user_info ]]
+            <div id="menu-holder">
+              <span id="menu_form">
+                <div class="menu_input">
+                  <span id="menu_label">
+                    <span class="menu_right"></span>
+                  </span>
+                </div>
+                <div class="menu_select" id="menu_select">
+                  <div class="left">
+                    <div class="top"></div>
+                    <div class="middle"></div>
+                    <div class="bottom"></div>
+                  </div>
+                  <div class="center">
+                    <div class="top"></div>
+                    <div class="middle select_content" id="select_content">
+                      <ol class="select_list">
+                        <li><a href="#[[= model.translate.menu_update_anchor ]]" class="link" onclick="return page.ie6_trap('[[= model.translate.menu_update_anchor ]]');return true;"><div class="menu_label">[[= model.translate.menu_update_title ]]</div></a></li>
+                        <li><a href="javascript: void(0)" class="link" onclick="return page.load_history(); return false;"><div class="menu_label">[[= model.translate.page_history_title ]]</div></a></li> 
+                        <li><a href="javascript: void(0)" class="link" onclick="return user.sign_out(); return false;"><div class="menu_label">[[= model.translate.menu_sign_out_title ]]</div></a></li> 
+                      </ol>
+                    </div>
+                    <div class="bottom"></div>
+                  </div>
+                  <div class="right">
+                    <div class="top"></div>
+                    <div class="middle"></div>
+                    <div class="bottom"></div>
+                  </div>
+                </div>
+              </span>
+              <div id="tooltip-holder-menu" class="tooltip_holder">
+                <div id="tooltip-menu" class="tooltip" title=""></div>
+              </div>
+            </div>
+[[?? true ]]
+            <span class="fb_connect_span"><a href="/#[[= model.translate.menu_fb_use_account_anchor ]]" onclick="return user.fb_login();return false;" class="fb_connect_btn" title="[[= model.translate.menu_fb_use_account_title ]]"></a></span>
+            <span class="item"><a class="menu def" id="menu-registration" href="#[[= model.translate.menu_register_anchor ]]" onclick="return page.ie6_trap('[[= model.translate.menu_register_anchor ]]');return true;">[[= model.translate.menu_register_title ]]</a></span>
+            <span class="item"><a class="def" href="javascript: void(0)" onclick="return user.sign_in(); return false;">[[= model.translate.menu_sign_in_title ]]</a></span>
+[[?]]

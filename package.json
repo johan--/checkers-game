@@ -1,0 +1,33 @@
+{
+  "name" : "checkers-game",
+  "version" : "0.2.1",
+  "description" : "A real-time checkers game online",
+  "author" : {
+    "name" : "Alain Maerten",
+    "email" : "alain.maerten@free.fr",
+    "url" : "http://www.checkers-game.net/"
+  },
+  "dependencies" : {
+    "express": "3.3.4",
+    "express-session": "1.10.3",
+    "string": "3.1.1",
+    "async": "0.9.0",
+    "moment": "2.9.0",
+    "MD5": "1.2.1",
+    "uniqid": "1.0.0",
+    "socket.io": "1.2.1",
+    "express-dot-engine": "1.0.4",
+    "mongoose": "3.8.23",
+    "nodemailer": "1.3.2",
+    "nodemailer-sendmail-transport": "1.0.0",
+    "nodemailer-html-to-text": "1.0.0",
+    "ipware": "0.0.3",
+    "geoip-lite": "1.1.6"
+  },
+  "preferGlobal" : false,
+  "keywords" : [ ],
+  "bugs" : {
+    "url" : "null"
+  },
+  "main" : "./app.js"
+}

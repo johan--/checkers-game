@@ -1,0 +1,45 @@
+<h1>News administration</h1>
+[[? (!model.newsList.length) ]]
+<b>No news !</b>
+[[?? true ]]
+<table cellspacing="2" cellpadding="2" border="2">
+<tr>
+  <td>id</td>
+  <td>Created</td>
+  <td>Updated</td>
+  <td>Title [en]</td>
+  <td>Text [en]</td>
+  <td>Active [en]</td>
+</tr>
+[[~ model.newsList :n ]]
+<tr>
+  <td>[[= n.id ]]</td>
+  <td>[[= n.news_created ]]</td>
+  <td>[[= n.news_updated ]]</td>
+  <td>[[= n.news_title_en ]]</td>
+  <td>[[= n.news_text_en ]]</td>
+  <td>[[= n.news_active_en ]]</td>
+  <td>
+    <form style="display:inline" action="/admin/news/view/[[= n.id ]]">
+      <input type="submit" value="View" />
+    </form>
+  </td>
+  <td>
+    <form style="display:inline" action="/admin/news/edit/[[= n.id ]]">
+      <input type="submit" value="Modify" />
+    </form>
+  </td>
+  <td>
+    <form style="display:inline" action="/admin/news/delete/[[= n.id ]]" method="post">
+      <input type="submit" value="Delete" />
+      <input type="hidden" name="_method" value="delete" />
+    </form>
+  </td>
+</tr>
+[[~]]
+</table>
+[[?]]
+<br />
+<form action="/admin/news/create">
+  <input type="submit" value="Create a news item" />
+</form>

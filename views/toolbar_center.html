@@ -1,0 +1,8 @@
+[[? model.session && model.session.user_info ]]
+  [[? model.session.user_info.user_login ]]
+            <span class="welcome"><b>[[= model.session.user_info.user_login ]]</b></span>
+            <span id="menu_face" class="fa_[[= model.session.user_info.face ]]"></span>
+            <span class="welcome">[[= model.translate.menu_user_logged_in ]] </span>
+  [[?]]            
+            <span class="welcome adaptable">[[= model.translate.menu_user_welcome ]] <b>[[? model.session.user_info.user_fb_id !== null ]][[= model.session.user_info.user_fb_name ]][[?? true ]][[= model.session.user_info.user_first_name ]] [[= model.session.user_info.user_last_name ]][[?]]</b>&nbsp; -&nbsp; </span>
+[[?]]            

@@ -1,0 +1,283 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+#header #title_area .logo {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/logo_[[= model.lang]].png", sizingMethod="crop");
+}
+#header #toolbar .fb_like_span {
+	display: inline-block;
+	padding: 0;
+	width: 100px;
+	height: 20px;
+	margin: 7px 0 5px 5px;
+}
+#header #toolbar .fb_connect_btn {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/fb_default.png", sizingMethod="crop");
+}
+#header #toolbar .fb_connect_btn:hover {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/fb_hover.png", sizingMethod="crop");
+}
+#flags .flag {
+	cursor: pointer;
+}
+#flags .flag.flag_en {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/en.png", sizingMethod="crop");
+}
+#flags .flag.flag_es {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/es.png", sizingMethod="crop");
+}
+#flags .flag.flag_fr {
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/fr.png", sizingMethod="crop");
+}
+#box-content .close {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/box-close.png", sizingMethod="crop");
+}
+#game.game10 {
+    width: 800px;
+    height: 600px;
+}
+#game.game8 {
+    width: 720px;
+    height: 520px;
+}
+#game.game10 .left .middle {
+    height: 576px;
+}
+#game.game10 .left .bottom {
+    top: 588px;
+}
+#game.game10 .center .top {
+    width: 780px;
+}
+#game.game10 .center .middle {
+    width: 780px;
+    height: 576px;
+}
+#game.game10 .center .bottom {
+    top: 588px;
+    width: 780px;
+}
+#game.game10 .right .top {
+    width: 10px;
+    height: 12px;
+}
+#game.game10 .right .middle {
+    width: 10px;
+    height: 576px;
+}
+#game.game10 .right .bottom {
+    top: 588px;
+    width: 10px;
+    height: 12px;
+}
+#game_zone {
+    overflow: hidden;
+}
+#game_zone .game_parts {
+    display: block;
+    position: relative;
+    text-align: center;
+}
+#game_zone .game_part {
+    display: inline-block;
+    top: 0;
+    left: 0;
+    vertical-align: top;
+    text-align: center;
+}
+#game_zone #game_left.game_part10 {
+    width: 400px;
+    float: left;
+}
+#game_zone #game_left.game_part8 {
+    width: 320px;
+    float: left;
+}
+#game_zone #game_right.game_part10 {
+    width: 300px;
+    float: right;
+}
+#game_zone #game_right.game_part8 {
+    width: 300px;
+    float: right;
+}
+#game_zone #game_right.game_part .dialogue_title {
+    display: block;
+    width: 300px;
+    height: 20px;
+    font-family: Arial,Verdana;
+    font-size: 14px;
+    font-weight: bold;
+    color: #804000;
+    line-height: 20px;
+    margin: 0 0 2px 0;
+    padding: 12px 0 0 0;
+}
+#game_zone #game_right.game_part .dialogue_flow {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    border: solid 1px #c8a880;
+    border-radius: 10px;
+    overflow: hidden;
+}
+#game_zone #game_right.game_part .dialogue_flow10 {
+    height: 316px;
+}
+#game_zone #game_right.game_part .dialogue_flow8 {
+    height: 236px;
+}
+#game_zone #game_right.game_part .dialogue_content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 288px;
+    font-family: Arial,Verdana;
+    font-size: 14px;
+    color: #533500;
+    line-height: 22px;
+    margin: 6px;
+    padding: 0 0 0 0;
+    overflow: hidden;
+    overflow-y: auto;
+    text-align: left;
+}
+#game_zone #game_right.game_part .dialogue_content10 {
+    height: 304px;
+}
+#game_zone #game_right.game_part .dialogue_content8 {
+    height: 224px;
+}
+#game_zone #game_right.game_part p.dialogue_message {
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 10px 0 0 0;
+    text-indent: 28px;
+    line-height: 22px;
+}   
+#game_zone #game_right.game_part .dialogue_face { 
+    display: inline-block; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px; 
+    height: 34px; 
+    margin: 0; 
+    padding: 0;
+}
+#game_zone #game_right.game_part .dialogue_login {
+    margin: 0;
+    padding: 0;
+}   
+#game_zone #game_right.game_part .dialogue_send {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 302px;
+    height: 30px;
+    margin: 4px 0 0 0;
+    padding: 0;
+    overflow: hidden;
+}
+#game_zone #game_right.game_part .dialogue_send .dialogue_form{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+#game_zone #game_right.game_part .dialogue_send .text_input{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    float: left;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+}
+#game_zone #game_right.game_part .dialogue_send .tinput{
+    width: 244px;
+    height: 20px;
+    font-family: Arial,Verdana;
+    font-size: 14px;
+    color: #533500;
+    line-height: 20px;
+    background-color: transparent;
+    border: solid 1px #c8a880;
+    border-radius: 10px;
+    margin: 0;
+    padding: 4px 8px 4px 8px;
+}
+#game_zone #game_right.game_part .dialogue_send .text_submit{
+    display: inline-block;
+    position: relative;
+    left: 0;
+    top: 0;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+#game_zone #game_right.game_part .dialogue_send .tsubmit{
+    width: 36px;
+    height: 30px;
+    font-family: Arial,Verdana;
+    font-size: 14px;
+    color: #533500;
+    line-height: 20px;
+    border: solid 1px #c8a880;
+    border-radius: 10px;
+    border: solid 1px #c8a880;
+    border-radius: 10px;
+    background-color: #f0e4c0;
+    margin: 0 0 0 4px;
+    padding: 4px 8px 4px 8px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;    
+}
+.b_db {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/board/db,40,40,40,40,0,0,4x3.png", sizingMethod="crop");}
+.b_pb {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/board/pb,40,40,40,40,0,0,4x3.png", sizingMethod="crop");}
+}
+.b_dw {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/board/dw,40,40,40,40,0,0,4x3.png", sizingMethod="crop");}
+}
+.b_pw {
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/board/pw,40,40,40,40,0,0,4x3.png", sizingMethod="crop");}
+}
+
+#footer .left {
+    margin : 7px 0 0 0;
+}
+#footer .center {
+    margin : 4px 4px 0 4px;
+}
+.rselect {
+	line-height: none;
+	border: none;
+	margin: 0 0 8px 0;
+	padding: 4px 8px 4px 8px;
+}
+

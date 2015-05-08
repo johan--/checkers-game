@@ -1,0 +1,90 @@
+#header #toolbar {
+	border: none;
+    background: none;
+}
+#header #toolbar .left {
+	border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-mb-e-la.png", sizingMethod="crop");
+}
+#header #toolbar .center {
+    border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-mb-e-ca.png", sizingMethod="scale");
+}
+#header #toolbar .right {
+    border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-mb-e-ra.png", sizingMethod="crop");
+}
+#game_rooms #room_list .room {
+	border: none;
+    background: none;
+}
+#game_rooms #room_list .room .left {
+	border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-gr-e-la.png", sizingMethod="crop");
+}
+#game_rooms #room_list .room .center {
+	border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-gr-e-ca.png", sizingMethod="scale");
+}
+#game_rooms #room_list .room .right {
+	border: none;
+	background: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-gr-e-ra.png", sizingMethod="crop");
+}
+.subframe {
+    border: none;
+    background: none;
+}
+.subframe .left .top {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-lt.png", sizingMethod="crop");
+}
+.subframe .left .middle {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-lc.png", sizingMethod="scale");
+}
+.subframe .left .bottom {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-lb.png", sizingMethod="crop");
+}
+.subframe .center .top {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-ct.png", sizingMethod="scale");
+}
+.subframe .center .middle {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-cc.png", sizingMethod="scale");
+}
+.subframe .center .bottom {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-cb.png", sizingMethod="scale");
+}
+.subframe .right .top {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-rt.png", sizingMethod="crop");
+}
+.subframe .right .middle {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-rc.png", sizingMethod="scale");
+}
+.subframe .right .bottom {
+    border: none;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../img/te-c-fa-e-rb.png", sizingMethod="crop");
+}
+#gender_input_usr {
+	width: 150px;
+}

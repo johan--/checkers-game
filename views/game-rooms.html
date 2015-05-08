@@ -1,0 +1,65 @@
+	<div class="subframe large_area">
+		<div class="left">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+		<div class="center">
+			<div class="top"></div>
+			<div class="middle large_zone" id="game_rooms">
+[[? model.room === '' ]]
+        <h2>[[= model.translate.menu_game_rooms_title ]] [[= model.room ]]</h2>
+				<p class="hparagraph">
+					[[= model.translate.page_game_rooms_rooms_intro ]]
+					<br />
+				</p>
+				<div id="room_list">
+          [[~ Object.keys(model.roomList) :room ]]
+          <div class="room" room="room[[= model.roomList[room]._id ]]">
+            <span class="left"></span>
+            <div class="center">
+              <span class="name">[[= model.translate.page_game_rooms_room ]] [[= model.roomList[room]._id ]]</span>
+              <span class="user">0</span>
+              <span class="game">0</span>
+              <span class="rules">[[=model.translate.page_game_rooms_rules ]] : [[= model.roomList[room].rule['rule_name_' + model.lang] ]]</span>
+            </div>
+            <span class="right"></span>
+          </div>
+          [[~]]
+  			</div>
+[[?? true ]]        
+				<div class="title">
+					<span class="main"><h2>[[= model.translate.page_game_rooms_room ]] [[= model.roomInfo._id ]]</h2></span>
+					<span class="rule_text">[[= model.translate.page_game_rooms_rules ]] :</span>
+					<a href="javascript: void(0)" onclick="return page.load_rules([[= model.roomInfo._id ]]); return false;"><span class="rule_link">[[= model.roomInfo.rule['rule_name_' + model.lang] ]]</span></a>
+				</div>
+				<p class="hparagraph">[[= model.translate.page_game_rooms_in_room_intro ]]<br /></p>
+				<div id="available_user_list_container">
+					<div class="list_title"><span class="list_title_left">[[= model.translate.page_game_rooms_available_players ]]</span><span class="list_title_right"></span></div>
+					<div class="user_list">
+            <div id="available_users">
+            [[~ Object.keys(model.userList) :user_id ]]
+              [[= model.userList[user_id]._id ]]
+            [[~]]
+            </div>
+					</div>
+				</div>
+				<div id="in_game_user_list_container">
+					<div class="list_title"><span class="list_title_left">[[= model.translate.page_game_rooms_games_in_course ]]</span><span class="list_title_right"></span></div>
+					<div class="user_list">
+	                    <div id="in_game_users"></div>
+	                </div>
+				</div>
+				<div class="bott">
+					<span class="quit"><input type="button" class="rsubmit" name="quit_room" id="quit_room" onclick="return game_rooms.quit_room(); return false;" value="[[= model.translate.page_game_rooms_in_room_quit ]]" /></span>
+				</div>
+[[?]]
+      </div>
+			<div class="bottom"></div>
+		</div>
+		<div class="right">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+	</div>

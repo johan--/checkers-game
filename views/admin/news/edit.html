@@ -1,0 +1,20 @@
+<h1>Modify a news item</h1>
+
+<form action="/admin/news/validate/[[= model.newsItem.id ]]" method="post">
+  
+  <label for="news_title_en">Title [EN]</label>
+  <input type="text" name="news_title_en" value="[[= model.newsItem.news_title_en ]]" id="news_title_en" />
+  <br />
+  
+  <label for="news_text_en">Text [EN]</label>
+  <textarea name="news_text_en" id="news_text_en">[[= model.newsItem.news_text_en ]]</textarea>
+  <br />
+  
+  <label for="news_active_en">Active [EN]</label>
+  <input type="checkbox" name="news_active_en" id="news_active_en"[[? model.newsItem.news_active_en ]] checked="checked"[[?]] />
+  <br />
+  
+  <input type="hidden" name="_method" value="put" />
+  <input type="submit" value="Validate" />
+  
+</form>

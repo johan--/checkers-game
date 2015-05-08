@@ -1,0 +1,46 @@
+	<div class="subframe large_area">
+		<div class="left">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+		<div class="center">
+			<div class="top"></div>
+			<div class="middle large_zone">
+        <h2>[[= model.translate.menu_home_title ]]</h2>
+<div class="home_info">
+<p>
+[[= model.homeIntro ]]
+<br />
+<br />
+</p>
+</div>
+<div class="news">
+<h3>[[= model.translate.page_home_news ]]</h3>
+<p>
+  <ul>
+[[~ model.newsList :n ]]
+    <li>
+			<div class="chapter">
+        <span class="title">[[= n['news_title_' + model.lang] ]]</span>
+        <span class="date">[[= n['news_created_locale'] ]]</span>
+      </div>
+			<div class="content">
+        <p>
+          [[= n['news_text_' + model.lang] ]]
+        </p>
+      </div>
+    </li>
+[[~]]
+  </ul>
+</p>
+</div>
+			</div>
+			<div class="bottom"></div>
+		</div>
+		<div class="right">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+	</div>

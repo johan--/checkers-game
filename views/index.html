@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<title>[[= model.translate.window_default_title ]]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="[[= model.translate.meta_description ]]" />
+<meta name="keywords" content="[[= model.translate.meta_keywords ]]" />
+<meta name="robots" content="index,follow,all" />
+<meta name="revisit-after" content="2 days" />
+<meta property="fb:app_id" content="[[= model.translate.fb_app_id ]]" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="css/jquery-ui-1.10.3.min.css" />
+<link rel="stylesheet" href="css/screen-[[= model.version_prefix]].css" />
+<!--[if lte IE 8]><link rel="stylesheet" href="css/screen-lte-ie8-[[= model.version_prefix]].css" /><![endif]-->
+<!--[if lte IE 7]><link rel="stylesheet" href="css/screen-lte-ie7-[[= model.version_prefix]].css" /><![endif]-->
+<!--[if lte IE 6]><link rel="stylesheet" href="css/screen-lte-ie6-[[= model.version_prefix]].css" /><![endif]-->
+[[? model.is_mobile ]]
+<meta name="viewport" content="width=1024,initial-scale=1.0" />
+[[?]]
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+<script src="js/jquery.ui.touch-punch.0.2.2.min.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="js/global-[[= model.version_prefix]].js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '[[= model.translate.analytics_ua ]]']);
+_gaq.push(['_trackPageview', '/init']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+[[? model.is_fb_enabled ]]
+<div id="fb-root"></div>
+<script src="js/fb-init-[[= model.version_prefix]].js"></script>
+[[?]]
+<div id="header">
+	<a href="/#[[= model.translate.menu_home_anchor ]]">
+		<div id="title_area">
+			<span class="logo"></span>
+      <span class="version">
+[[? model.is_mobile ]]
+[[= model.translate.mobile_version_display ]]
+[[?]]        
+      </span>
+		</div>
+	</a>
+	<div id="flags">
+		<a href="http://[[= model.sub_domain ]].checkers-game.[[= model.extension ]]/"><span class="flag flag_en" title="English version"></span></a>
+		<a href="http://[[= model.sub_domain ]].juego-de-damas.[[= model.extension ]]/"><span class="flag flag_es" title="Versión española"></span></a>
+		<a href="http://[[= model.sub_domain ]].jeu-de-dames.[[= model.extension ]]/"><span class="flag flag_fr" title="Version française"></span></a>
+	</div>
+	<div id="top_ad">
+		<div class="ad1">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4729392151663601";
+[[? model.is_mobile ]]
+google_ad_slot = "[[= model.translate.adsense_slot4 ]]";
+google_ad_width = 234;
+google_ad_height = 60;
+[[?? true ]]
+google_ad_slot = "[[= model.translate.adsense_slot1 ]]";
+google_ad_width = 468;
+google_ad_height = 60;
+[[?]]
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+		</div>
+	</div>
+	<div id="partners">
+[[~ model.translate.header_partners_list :p ]]
+<span class="partner"><a href="[[= p.href ]]" title="[[= p.title ]]" target="[[= p.target ]]"><img src="[[= p.src ]]" width="[[= p.width ]]" height="[[= p.height ]]" border="[[= p.border ]]" alt="[[= p.alt ]]" /></a></span>
+[[~]]
+  </div>
+	<div id="toolbar_container">
+		<div id="toolbar">
+      <div class="left"></div>
+      <div class="right"></div>
+			<div class="center" id="toolbar_content">
+        <form class="uform">
+          <span id="toolbar_left" class="left_span">
+            <span class="item"><a class="menu def" id="menu-home" href="/#[[= model.translate.menu_home_anchor ]]" onclick="return page.ie6_trap('[[= model.translate.menu_home_anchor ]]');return true;">[[= model.translate.menu_home_title ]]</a></span>
+            <span class="item"><a class="menu def" id="menu-game-rooms" href="/#[[= model.translate.menu_game_rooms_anchor ]]" onclick="return page.ie6_trap('[[= model.translate.menu_game_rooms_anchor ]]');return true;">[[= model.translate.menu_game_rooms_title ]]</a></span>
+            <span class="item small"><a class="def" href="javascript: void(0)" onclick="return page.load_ranking(); return false;" title="[[= model.translate.page_ranking_title_mob ]]">[[= model.translate.page_ranking_title_mob ]]</a></span>
+            <span class="item large"><a class="def" href="javascript: void(0)" onclick="return page.load_ranking(); return false;">[[= model.translate.page_ranking_title ]]</a></span>
+            <span class="item"><a class="menu def" id="menu-game-rules" href="[[= model.translate.menu_rules_anchor ]].html"[[= (model.sel!='rules' ? ' onclick="return page.load_rules(); return false;"' : ' onclick="return false;"')]]>[[= model.translate.menu_rules_title ]]</a></span>
+            <span class="item"><a class="def" href="javascript: void(0)" onclick="return page.load_help(); return false;">[[= model.translate.menu_help_title ]]</a></span>
+            <span class="item"><a class="def" href="[[= model.translate.fb_page_url ]]" target="_blank">[[= model.translate.menu_on_facebook_title ]]</a></span>
+          </span>
+          <span class="fb_like_span"><fb:like href="[[= model.translate.fb_page_url ]]" width="90" height="20" layout="button_count" font="arial"></fb:like></span>
+          <span id="toolbar_right" class="right_span">
+            [[= partial('toolbar_right.html') ]]
+          </span>
+          <span id="toolbar_center" class="center_span">
+            [[= partial('toolbar_center.html') ]]
+          </span>
+        </form>
+			</div>
+    </div>
+	</div>												
+</div>
+<div id="main_container">
+</div>
+<div id="footer">
+	<div class="left">
+		<span class="footer_paypal_span">
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="[[= model.translate.paypal_donation_button_id ]]">
+				<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+				<input type="image" src="[[= model.translate.paypal_donation_button_image ]]" border="0" name="submit" alt="[[= model.translate.paypal_donation_button_alt ]]">
+			</form>
+		</span>
+		<span class="centered_span">[[= model.translate.paypal_to_contribute ]]</span>
+	</div>
+	<div class="center">
+		<div id="bot_ad">
+			<div class="ad2">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4729392151663601";
+[[? model.is_mobile ]]
+google_ad_slot = "[[= model.translate.adsense_slot3 ]]";
+google_ad_width = 468;
+google_ad_height = 15;
+[[?? true ]]
+google_ad_slot = "[[= model.translate.adsense_slot2 ]]";
+google_ad_width = 728;
+google_ad_height = 15;
+[[?]]
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+			</div>
+		</div>
+	</div>
+	<div class="right">
+	   <div id="partner_list">
+[[~ model.translate.footer_partners_list :p ]]
+<a href="[[= p.href ]]" title="[[= p.title ]]" target="[[= p.target ]]">[[= p.text ]]</a>
+[[~]]
+	   </div>
+	</div>
+</div>
+<div id="box-overlay"></div>
+<div id="box-wrapper">
+	<div id="box-container">
+		<div id="box-content">
+			<a href="javascript:void(0)" id="box-content-close" class="close"></a>
+			<div id="box-inner-content">
+			</div>
+		</div>
+	</div>
+</div>
+<div id="game-box-overlay"></div>
+<div id="game-box-wrapper">
+	<div id="game-box-container">
+		<div id="game-box-content">
+			<a href="javascript:void(0)" id="game-box-content-close" class="close"></a>
+			<div id="game-box-inner-content">
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

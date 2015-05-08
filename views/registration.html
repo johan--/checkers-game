@@ -1,0 +1,220 @@
+	<div class="subframe large_area">
+		<div class="left">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+		<div class="center">
+			<div class="top"></div>
+			<div class="middle large_zone">
+        <h2>
+[[? model.action == 'update_registration' ]]
+  [[= model.translate.page_update_title ]]
+[[?? model.action == 'update_fb_sign_in' ]]
+  [[? model.user_info.user_login == '' ]]
+    [[= model.translate.page_fb_sign_in_title ]]
+  [[?? true ]]
+    [[= model.translate.page_fb_update_title ]]
+  [[?]]
+[[?? true ]]
+  [[= model.translate.page_register_title ]]
+[[?]]
+        </h2>
+[[? model.action == 'confirm' ]]
+				<p class="hparagraph">			
+					<br />
+  [[= model.message ]]
+        </p>
+[[?? true ]]
+				<form id="register_form" class="rform" onsubmit="return user.register(); return false;">
+					<input type="hidden" name="action" id="action" value="[[= model.action ]]" />
+					<input type="hidden" name="token" id="token" value="[[= model.token ]]" />
+					<input type="hidden" id="country_id" name="country_id" value="[[= model.user_info.country._id ]]" />
+					<input type="hidden" id="face_id" name="face_id" value="[[= model.user_info.face ]]" />
+					<p class="hparagraph">
+  [[? model.action == 'update_registration' ]]
+    [[= model.translate.page_update_intro ]]
+  [[?? model.action == 'update_fb_sign_in' ]]
+    [[? model.user_info.user_login == '' ]]
+      [[= model.translate.page_fb_sign_in_intro ]]
+    [[?? true ]]
+      [[= model.translate.page_fb_update_intro ]]
+    [[?]]
+  [[?? true ]]
+    [[= model.translate.page_register_intro ]]
+  [[?]]
+          </p>
+  [[? model.action != 'update_fb_sign_in' ]]
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="country_name" class="rlabel">[[= model.translate.page_register_country ]] :</label>
+							<span id="country_name" tabindex="1">
+								<span class="country_left">
+									<span class="country_flag [[= model.user_info.country.country_code.toLowerCase() ]]"></span>
+									<span class="country_name">[[= model.user_info.country['country_name_' + model.lang] ]]</span>
+								</span>
+								<span class="country_right"></span>
+							</span>
+						</span>
+						<span class="input_err" id="country_id_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+          <div class="country_select" id="country_select">
+            <div class="left">
+              <div class="top"></div>
+              <div class="middle"></div>
+              <div class="bottom"></div>
+            </div>
+            <div class="center">
+              <div class="top"></div>
+              <div class="middle select_content" id="select_content">
+                <ol class="select_list">
+        [[~ model.countryList :c ]]
+        <li[[? c._id == model.user_info.country._id ]] class="selected"[[?]] id="co_[[= c._id ]]"><span class="country_flag [[= c.country_code.toLowerCase() ]]"></span><span class="country_name">[[= c['country_name_' + model.lang] ]]</span></li>
+        [[~]]
+                </ol>
+              </div>
+              <div class="bottom"></div>
+            </div>
+            <div class="right">
+              <div class="top"></div>
+              <div class="middle"></div>
+              <div class="bottom"></div>
+            </div>
+          </div>
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="first_name" class="rlabel">[[= model.translate.page_register_first_name ]] :</label>
+							<input type="text" id="first_name" name="first_name" tabindex="2" size="20" maxlength="60" class="rinput" value="[[? model.user_info.user_first_name ]][[= model.user_info.user_first_name ]][[?]]" />
+						</span>
+						<span class="input_err" id="first_name_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+					
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="last_name" class="rlabel">[[= model.translate.page_register_last_name ]] :</label>
+							<input type="text" id="last_name" name="last_name" tabindex="3" size="20" maxlength="60" class="rinput" value="[[? model.user_info.user_last_name ]][[= model.user_info.user_last_name ]][[?]]" />
+						</span>
+						<span class="input_err" id="last_name_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="gender" class="rlabel">[[= model.translate.page_register_gender ]] :</label>
+							<span id="gender">
+								<input type="radio" name="gender" id="gender_m" tabindex="4" class="rradio" value="m"[[? model.user_info.user_gender === 'm' ]] checked="checked"[[?]] /><label for="gender_m" class="rradlbl">[[= model.translate.page_register_gender_m ]]</label>
+								<input type="radio" name="gender" id="gender_f" tabindex="5" class="rradio" value="f"[[? model.user_info.user_gender === 'f' ]] checked="checked"[[?]] /><label for="gender_f" class="rradlbl">[[= model.translate.page_register_gender_f ]]</label>
+							</span>
+						</span>
+						<span class="input_err" id="gender_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="email" class="rlabel">[[= model.translate.page_register_email ]] :</label>
+							<input type="text" id="email" name="email" tabindex="6" size="55" maxlength="128" class="rinput" value="[[? model.user_info.user_email ]][[= model.user_info.user_email ]][[?]]" />
+						</span>
+						<span class="input_err" id="email_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+    [[? model.action == 'register' ]]
+					<p class="rparagraph">[[= model.translate.page_register_email_notice ]]</p>
+    [[?]]
+  [[?]]
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="username" class="rlabel">[[= model.translate.page_register_username ]] :</label>
+							<input type="text" id="username" name="username" tabindex="7" size="10" maxlength="12" class="rinput" value="[[? model.user_info.user_login.replace('"', '&quot;') ]][[= model.user_info.user_login ]][[?]]"[[? (model.action == 'update_registration') || ((model.action == 'update_fb_sign_in') && (model.user_info.user_login != '')) ]] disabled="disabled"[[?]] />
+						</span>
+						<span class="input_err" id="username_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+  [[? (model.action == 'register') || ((model.action == 'update_fb_sign_in') && (model.user_info.user_login == '')) ]]
+					<p class="rparagraph">[[= model.translate.page_register_username_notice ]]</p>
+  [[?]]
+  [[? model.action != 'update_fb_sign_in' ]]
+					<div class="dinput" style="position: relative;">
+						<span class="input_usr">
+							<label for="password" class="rlabel">
+								<span class="label_left">[[= model.translate.page_register_password ]] :</span>
+								<span class="label_right">[[? model.action != 'register' ]][[= model.translate.page_register_password_notice ]][[?? true ]][[= model.translate.page_register_password_format ]][[?]]</span>
+							</label>
+							<input type="password" id="password" name="password" tabindex="8" size="10" maxlength="24" class="rinput" value="" />
+						</span>
+						<span class="input_err" id="password_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="password_confirmation" class="rlabel">[[= model.translate.page_register_confirmation ]] :</label>
+							<input type="password" id="password_confirmation" name="password_confirmation" tabindex="9" size="10" maxlength="24" class="rinput" value="" />
+						</span>
+						<span class="input_err" id="password_confirmation_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+  [[?]]
+					<label for="faces_container" class="rlabel">[[= model.translate.page_register_appearance ]] :</label>
+					<div id="faces_container" tabindex="10">
+						<div class="left"></div>
+						<div class="center">
+							<div id="faces_content">
+    [[~ model.faceList :f ]]
+                <span class="fa[[? f._id == model.user_info.face ]] selected[[?]] fa_[[= f._id ]]"></span>
+    [[~]]
+              </div>
+						</div>
+						<div class="right"></div>
+					</div>
+					<div id="face_preview"></div>
+  [[? (model.action == 'register') || ((model.action == 'update_fb_sign_in') && (model.user_info.user_login == '')) ]]
+					<p class="rparagraph">[[= model.translate.page_register_appearance_notice ]]</p>
+  [[?]]
+					<div class="dinput">
+						<span class="input_usr">
+							<input type="checkbox" id="optin" name="optin" tabindex="11" class="rcheckbox"[[? model.action == 'register' || ((model.action == 'update_registration' || model.action == 'update_fb_sign_in') && model.user_info.user_optin === true) ]] checked="checked"[[?]] />
+							<label for="optin" class="rchklbl">[[= model.translate.page_register_optin_notice ]]</label>
+						</span>
+					</div>
+					
+					<br />
+					
+					<div class="dinput">
+						<span class="input_usr">
+							<input type="submit" id="validate" name="validate" tabindex="12" class="rsubmit" value="[[? model.action == 'register' ]][[= model.translate.page_register_validate ]][[?? true ]][[= model.translate.page_update_validate ]][[?]]" />
+						</span>
+						<span class="input_err" id="validate_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+        </form>
+[[?]]
+			</div>
+			<div class="bottom"></div>
+		</div>
+		<div class="right">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+	</div>

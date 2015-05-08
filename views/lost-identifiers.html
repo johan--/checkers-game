@@ -1,0 +1,52 @@
+	<div id="login" class="subframe">
+		<div class="left">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+		<div class="center">
+			<div class="top"></div>
+			<div class="middle" id="login_zone">
+		
+				<h2>[[= model.translate.page_lost_ids_title ]]</h2>
+			
+				<form id="lost_ids_form" class="rform" onsubmit="return false;">
+					
+					<input type="hidden" name="token" id="token" value="[[= model.token ]]" />
+					
+					<p class="hparagraph">[[= model.translate.page_lost_ids_intro ]]</p>
+					
+					<div class="dinput">
+						<span class="input_usr">
+							<label for="email" class="rlabel">[[= model.translate.page_lost_ids_email ]] :</label>
+							<input type="text" id="email" name="email" size="30" maxlength="128" class="rinput" />
+						</span>
+						<span class="input_err" id="email_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+					
+					<br />
+					
+					<div class="dinput">
+						<span class="input_usr">
+							<input type="submit" id="validate" class="rsubmit" value="[[= model.translate.page_lost_ids_validate ]]" />
+						</span>
+						<span class="input_err" id="validate_error">
+							<span class="icon"></span>
+							<span class="text"></span>
+						</span>
+					</div>
+					
+				</form>
+
+			</div>
+			<div class="bottom"></div>
+		</div>
+		<div class="right">
+			<div class="top"></div>
+			<div class="middle"></div>
+			<div class="bottom"></div>
+		</div>
+	</div>

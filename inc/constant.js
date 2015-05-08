@@ -1,0 +1,8 @@
+exports.priority = {
+  PRIORITY_ZERO:    0,
+  PRIORITY_LOWEST:  1,
+  PRIORITY_LOW:     2,
+  PRIORITY_MEDIUM:  3,
+  PRIORITY_HIGH:    4,
+  PRIORITY_HIGHEST: 5
+};
