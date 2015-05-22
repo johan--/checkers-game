@@ -39,7 +39,12 @@
 					<div class="user_list">
             <div id="available_users">
             [[~ Object.keys(model.userList) :user_id ]]
-              [[= model.userList[user_id]._id ]]
+              <div class="user [[? parseInt(user_id) === model.session.user_info._id ]]self[[?? true ]]available[[?]]" user_id="[[= user_id ]]" user_login="[[= model.userList[user_id].user_login ]]" face_id="[[= model.userList[user_id].face ]]">
+                <span class="rel"></span>
+                <span class="flag [[= model.userList[user_id].country.country_code.toLowerCase() ]]" title="[[= model.userList[user_id].country['country_name_' + model.lang] ]]"></span>
+                <span class="face fa_[[= model.userList[user_id].face ]]"></span>
+                <span class="name">[[= model.userList[user_id].user_login ]]</span>
+              </div>
             [[~]]
             </div>
 					</div>
@@ -47,8 +52,10 @@
 				<div id="in_game_user_list_container">
 					<div class="list_title"><span class="list_title_left">[[= model.translate.page_game_rooms_games_in_course ]]</span><span class="list_title_right"></span></div>
 					<div class="user_list">
-	                    <div id="in_game_users"></div>
-	                </div>
+            <div id="in_game_users">
+              
+            </div>
+	        </div>
 				</div>
 				<div class="bott">
 					<span class="quit"><input type="button" class="rsubmit" name="quit_room" id="quit_room" onclick="return game_rooms.quit_room(); return false;" value="[[= model.translate.page_game_rooms_in_room_quit ]]" /></span>

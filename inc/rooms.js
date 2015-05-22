@@ -73,10 +73,11 @@ exports.init = function(server, cb) {
         }
       });
 
-      socket.on('leaveRoom', function () {
+      socket.on('leaveRoom', function (cb) {
         try {
           userLeaveRoom(socket);
           adminUpdateClients();
+          cb();
         } catch (e) {
           logError('*** Catched error on leaveRoom : ' + e.toString() + ' ***');
         }
@@ -289,7 +290,6 @@ function userJoinRoom(socket) {
       players[socket.room][socket.user._id] = socket.user;
       players[socket.room][socket.user._id]['socket_id'] = socket.id;
       players[socket.room][socket.user._id]['in_session'] = 0;
-      console.log('players',players);
     }
     broadcastUserList(socket);
   } catch (e) {
@@ -303,17 +303,17 @@ function userLeaveRoom(socket) {
       if (socket.user) {
         for (var session_id in sessions[socket.room]) {
           var session_info = sessions[socket.room][session_id];
-          if (sessions[socket.room][session_id].from_user_id == socket.user.user_id || sessions[socket.room][session_id].dest_user_id == socket.user.user_id) {
-            if (session_info.from_user_id == socket.user.user_id && session_info.dest_user_id in players[socket.room]) {
+          if (sessions[socket.room][session_id].from_user_id == socket.user._id || sessions[socket.room][session_id].dest_user_id == socket.user._id) {
+            if (session_info.from_user_id == socket.user._id && session_info.dest_user_id in players[socket.room]) {
               players[socket.room][session_info.dest_user_id]['in_session'] = 0;
             }
-            if (session_info.dest_user_id == socket.user.user_id && session_info.from_user_id in players[socket.room]) {
+            if (session_info.dest_user_id == socket.user._id && session_info.from_user_id in players[socket.room]) {
               players[socket.room][session_info.from_user_id]['in_session'] = 0;
             }
             delete sessions[socket.room][session_id];
           }
         }
-        delete players[socket.room][socket.user.user_id];
+        delete players[socket.room][socket.user._id];
         broadcastUserList(socket);
       }
       socket.leave(socket.room);

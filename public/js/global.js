@@ -7,6 +7,7 @@ var node = {
       if (node.socket) {
         node.disconnect();
       }
+      
       node.socket = io.connect('http://[[= model.http_host ]]', {
         transports: ['websocket',
           'flashsocket',
@@ -16,12 +17,107 @@ var node = {
         'flash policy port': 843,
         'force new connection': true
       });
+      
       node.socket.on('connect', function () {
         node.socket.emit('addUser', user.user_info, node.room);
         node.connected = 1;
       });
+      
       node.socket.on('disconnect', function () {
         node.connected = 0;
+      });
+      
+      node.socket.on('updateUserList', function(playersList, sessionsList) {
+
+        $.each($('#game_rooms #available_users .user'), function(index, el) {
+            var user_id = $(el).attr('user_id');
+            if(!playersList.hasOwnProperty(user_id)){
+                $(el).remove();
+                console.log('removed user #' + user_id);
+            }else if(playersList[user_id]['in_session'] != 0){
+                $(el).remove();
+                console.log('removed user #' + user_id);
+            }
+        });
+
+        var target = null;
+        
+        for(var user_id in playersList){
+          if(playersList[user_id]['in_session'] == 0){
+            
+            var sel = $('#game_rooms #available_users .user[user_id=' + user_id + ']');
+            
+            if(sel.length != 0) {
+              var elem = sel.eq(0);
+              console.log('found existing user #' + user_id);
+            } else {
+              var item=playersList[user_id];
+              var elem = $('<div>')
+                  .addClass('user');
+              $(elem).attr({user_id: item._id});
+              $(elem).unbind('click');
+              if(item._id==user.user_info._id){
+                  $(elem).removeClass('available').addClass('self');
+              }else{
+                  $(elem).bind('click', function(){
+                      return game_rooms.select_user($(this).attr('user_id'), $(this).attr('user_login'), $(this).attr('face_id'));
+                  });
+                  $(elem).removeClass('self').addClass('available');
+              }
+              var rel=$('<span>')
+                  .addClass('rel');
+              $(elem).append(rel);
+              $(elem).append($('<span>')
+                  .addClass('flag')
+                  .addClass(item.country.country_code.toLowerCase())
+                  .attr({title: item.country['country_name_[[= model.lang ]]']})
+              );
+              $(elem).append($('<span>')
+                  .addClass('face')
+                  .addClass('fa_'+item.face)
+              );
+              $(elem).append($('<span>')
+                  .addClass('name')
+                  .append(item.user_login)
+              );
+              if(item.is_mobile=='1'){
+                  $(elem).append($('<span>')
+                      .addClass('mobile')
+                  );
+              }
+              if(item.is_past_opponent=='1'){
+                  $(elem).append($('<span>')
+                      .addClass('history')
+                      .attr({title: tr.history_with+' '+item.user_login})
+                      .bind('click', function(){
+                          return page.load_history_with_opponent($(this).parent('.user').attr('user_id'), $(this).parent('.user').attr('user_login'), $(this).parent('.user').attr('face_id'));
+                      })
+                  );
+              }
+              if(target != null) {
+                $(elem).insertAfter($(target));
+                console.log('inserted A user #' + user_id);
+              }else{
+                sel = $('#game_rooms #available_users .user');
+                if(sel.length != 0) {
+                  target = sel.eq(0);
+                  $(elem).insertBefore($(target));
+                  console.log('inserted B user #' + user_id);
+                } else {
+                  $('#game_rooms #available_users').append($(elem));
+                  console.log('inserted C user #' + user_id);
+                }
+              }
+            }
+            target = elem;
+              
+          }
+        }
+
+        $('#game_rooms #available_user_list_container .list_title .list_title_right').eq(0).html('&nbsp;:&nbsp;'+$('#game_rooms #available_users .user').length);
+
+        $('#game_rooms #in_game_user_list_container .list_title .list_title_right').eq(0).html('&nbsp;:&nbsp;'+$('#game_rooms #in_game_users .game_in_course').length);
+        
       });
     } catch (err) {
       console.log('node.connect() :: ' + err.toString());
@@ -167,12 +263,14 @@ var page = {
             page.load_menu();
             break;
           case 'game-rooms':
-            $.each($('#game_rooms #room_list .room'), function(index, elem) {
-              $(elem).unbind('click');
-	            $(elem).bind('click', function() {
-                return game_rooms.join_room($(this).attr('room'));
+            if(node.room === '') {
+              $.each($('#game_rooms #room_list .room'), function(index, elem) {
+                $(elem).unbind('click');
+                $(elem).bind('click', function() {
+                  return game_rooms.join_room($(this).attr('room'));
+                });
               });
-            });
+            }
           default:
             $('#toolbar .menu').removeClass('sel');
             $('#menu-' + data.menu_id).addClass('sel');
@@ -331,6 +429,14 @@ var game_rooms = {
         return page.load_content({page: '[[= model.translate.menu_game_rooms_anchor ]]', extra_data: {room: node.room}, target: 'main_container'}, function() {});
       });
     }
+  },
+  
+  quit_room: function() {
+    node.socket.emit('leaveRoom', function() {
+      console.log('Quitted room #' + node.room);
+      node.room = '';
+      return page.load_content({page: '[[= model.translate.menu_game_rooms_anchor ]]', extra_data: {}, target: 'main_container'}, function() {});
+    });
   }
 };
   

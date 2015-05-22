@@ -235,9 +235,6 @@ app.post('/load-content', function (req, res) {
       var room = '';
       if(req.body.extra_data) {
         room = req.body.extra_data.room;
-        req.session.room = room;
-      } else if(req.session.room) {
-        room = req.session.room;
       }
       options.room = room;
       if(room === '') {
