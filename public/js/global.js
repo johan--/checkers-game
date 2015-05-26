@@ -24,6 +24,7 @@ var node = {
       });
       
       node.socket.on('disconnect', function () {
+        node.room = '';
         node.connected = 0;
       });
       
@@ -163,6 +164,7 @@ var user = {
         success:function(data){
           if(data.err == 0) {
             user.user_info = null;
+            node.room = '';
             console.log("user_info", user.user_info);
             for(var part in data.html) {
               $('#' + part).html(decodeURIComponent(data.html[part]));
@@ -275,6 +277,7 @@ var page = {
             $('#toolbar .menu').removeClass('sel');
             $('#menu-' + data.menu_id).addClass('sel');
             page.load_menu();
+            cb();
         }
       }});
     return false;
@@ -423,10 +426,11 @@ var game_rooms = {
     } else if (user.user_info.user_login === '') {
       return page.change_hash('[[= model.translate.menu_update_anchor ]]');
     } else {
-      node.socket.emit('joinRoom', room, function() {
-        console.log('Joined room #' + room);
-        node.room = room;
-        return page.load_content({page: '[[= model.translate.menu_game_rooms_anchor ]]', extra_data: {room: node.room}, target: 'main_container'}, function() {});
+      return page.load_content({page: '[[= model.translate.menu_game_rooms_anchor ]]', extra_data: {room: room}, target: 'main_container'}, function() {
+        node.socket.emit('joinRoom', room, function() {
+          console.log('Joined room #' + room);
+          node.room = room;
+        });
       });
     }
   },

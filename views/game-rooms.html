@@ -39,7 +39,7 @@
 					<div class="user_list">
             <div id="available_users">
             [[~ Object.keys(model.userList) :user_id ]]
-              <div class="user [[? parseInt(user_id) === model.session.user_info._id ]]self[[?? true ]]available[[?]]" user_id="[[= user_id ]]" user_login="[[= model.userList[user_id].user_login ]]" face_id="[[= model.userList[user_id].face ]]">
+              <div class="user [[? parseInt(user_id) === model.session.user_info._id ]]self[[?? true ]]available[[?]]" user_id="[[= user_id ]]">
                 <span class="rel"></span>
                 <span class="flag [[= model.userList[user_id].country.country_code.toLowerCase() ]]" title="[[= model.userList[user_id].country['country_name_' + model.lang] ]]"></span>
                 <span class="face fa_[[= model.userList[user_id].face ]]"></span>
